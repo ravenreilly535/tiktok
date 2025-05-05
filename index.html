@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TikTok Profile Scraper</title>
+</head>
+<body>
+  <h1>TikTok Profile Scraper</h1>
+  <input type="text" id="username" placeholder="Enter TikTok username" />
+  <button onclick="getProfile()">Get Profile</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function getProfile() {
+      const username = document.getElementById("username").value;
+      const res = await fetch(`/api/tiktok?username=${username}`);
+      const data = await res.json();
+      document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
